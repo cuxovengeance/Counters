@@ -3,7 +3,7 @@ import Popup from "reactjs-popup";
 
 import '../index.css';
 
-const CreateCounter = ({saveCounter}) => {
+const CreateCounter = () => {
 
     /*State */
     const [title, saveName] = useState('');
@@ -23,9 +23,7 @@ const CreateCounter = ({saveCounter}) => {
         saveError(false);
 
         /*Construyo EL contador que estoy agregando*/
-        const counter = {
-            title
-        }
+        const counter = {title}
 
 /*        console.log(counter);*/
 

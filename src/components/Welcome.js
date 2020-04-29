@@ -3,7 +3,11 @@ import '../index.css';
 
 const Welcome = ({updateShowWelcome}) => {
 
-    const hideWelcome = (e) => { updateShowWelcome (false)};
+    /*extraigo updateShowWelcome de mi App.js
+    Función hideWelcome, ArrowFunction que cambia el estado de
+     updateShowWelcome a false para que se oculte una vez que
+     se hace click en el botón Get Started*/
+    const hideWelcome = () => { updateShowWelcome (false)};
 
     return(
         <Fragment>

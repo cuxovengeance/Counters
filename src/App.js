@@ -1,29 +1,22 @@
 import React,{Fragment, useState} from "react";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import shortid from 'shortid';
 
 /*Components*/
 import Welcome from "./components/Welcome";
 import CreateCounter from "./components/CreateCounter";
-
-/*Functions*/
+import ListCounters from "./components/ListCounters";
 
 
 function App() {
-    /*State de WelcomeScreen*/
+    /*State de WelcomeScreen
+    * Lo inicio el true, porque es lo primero que se muestra en pantalla
+    * al iniciar la app*/
     const [showWelcome , updateShowWelcome] = useState(true);
 
-    /*State de los Contadores*/
-    const[counters, updateCounters] = useState([]);
-
     /*State de un contador*/
-    const [counter, saveCounter] = useState({
-        id:shortid.generate(),
-        title:'',
-        count: 0
-    });
+    const [counter, saveCounter] = useState({});
 
-    /*UseEffect */
+
 
     return (
         <Fragment>
@@ -38,6 +31,8 @@ function App() {
                     <CreateCounter
                         saveCounter={saveCounter}
                     />
+
+                    <ListCounters/>
 
                     <Switch>
 

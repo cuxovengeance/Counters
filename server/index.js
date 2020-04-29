@@ -91,7 +91,7 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
  * Easter egg
  * ----------
  * */
-/*  fetch('/api/v1/counters', { method: 'get' })
+/*  fetch('/api/v1/counter', { method: 'get' })
      .then(res => res.json())
      .then(res => console.log(res))
   */
