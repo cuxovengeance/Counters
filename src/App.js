@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Welcome from "./components/Welcome";
 import CreateCounter from "./components/CreateCounter";
 import ListCounters from "./components/ListCounters";
+import Delete from "./components/Delete";
 
 
 function App() {
@@ -13,9 +14,11 @@ function App() {
     * al iniciar la app*/
     const [showWelcome , updateShowWelcome] = useState(true);
 
-    /*State de un contador*/
-    const [counter, saveCounter] = useState({});
+    /*State Mostrar Delete*/
+    const [showDelete, updateShowDelete] = useState(false);
 
+    /*State para captar id*/
+    const [idToSave, captIdToSave] = useState('');
 
 
     return (
@@ -28,11 +31,19 @@ function App() {
             : /*Si el showWelcome es false, que muestre el mainScreen*/
                 <Router>
                     {/*Como el botón de agregar counter se muestra siempre, lo dejo fuera del Switch*/}
-                    <CreateCounter
-                        saveCounter={saveCounter}
-                    />
+                    <CreateCounter/>
 
-                    <ListCounters/>
+                    {showDelete ?
+                        <Delete
+                            updateShowDelete={updateShowDelete}
+                            idToSave={idToSave}
+                        />
+                    : null}
+
+                    <ListCounters
+                        updateShowDelete={updateShowDelete}
+                        captIdToSave={captIdToSave}
+                    />
 
                     <Switch>
 

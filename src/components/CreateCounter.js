@@ -44,8 +44,6 @@ const CreateCounter = () => {
         saveName('');
 
         /*Cerrar*/
-
-
     };
 
 
@@ -74,11 +72,11 @@ const CreateCounter = () => {
                                     onChange={ e => saveName(e.target.value)}
                                 />
 
-                                <input
+                                <button
                                     type="submit"
                                     className="button-primary"
                                     value="Save"
-                                />
+                                > Save</button>
                             </form>
 
                             <div className="container marginFooterCreateCounterForm">

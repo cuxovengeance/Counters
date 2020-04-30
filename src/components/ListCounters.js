@@ -1,53 +1,58 @@
 import React, {Fragment, useState, useEffect} from "react";
 import Increment from "./Increment";
 import Decrement from "./Decrement";
+import Delete from "./Delete";
 
-const ListCounters = () => {
+import '../CSS/listCounters.css'
+
+const ListCounters = ({updateShowDelete,captIdToSave}) => {
 
     /*State de los Contadores*/
-    const[counters, updateCounters] = useState([]);
+    const [counters, updateCounters] = useState([]);
 
+    /*console.log(counters.map(counter => counter.count));*/
+ /*   let [setCount, updateCounts] = useState('');
+    const i = counters.map(counter => counter.count);*/
 
-    useEffect(() => {
-        /*utilizo el getCounters, le paso la data a mi State y como [dependencia]
-        * le paso mi [counters] para que lo actualice cada vez que recibe un
-        * registro nuevo*/
-            /*getCounters().then(data => updateCounters(data), console.error);*/
-
-        fetch('/api/v1/counter', { method: 'get' })
+    const callGet = async () => {
+        await fetch('/api/v1/counter', { method: 'get' })
             .then(res => res.json())
             .then(res => updateCounters(res))
-        }, [counters]);
+    }
 
+    /*Arreglar que cambie por cada cambio, no que este corriendo siempre*/
+    useEffect(() => {callGet()}, [counters])
 
     return(
         <Fragment>
-            {/*{JSON.stringify(counters)}*/}
-            <div>
-                {/*Realizo un map de Counters[] osea mapeo todo el Array
+                <div className="center">
+                    {/*Realizo un map de Counters[] osea mapeo todo el Array
                 y le paso su id unico, el titulo del counter y finalmente el count*/}
-                {counters && counters.map(counter => (
-                    <p
+                    {counters && counters.map(counter => (
+                        <p
+                            key={counter.id}
+                            onClick={() => {
+                                updateShowDelete(true)
+                                captIdToSave(counter)
+                            }}
 
-                        key={counter.id}
-                    >
-                        {counter.title}
-                        &emsp; &emsp; &emsp;
+                        >
+                            {counter.title}
 
+                            &emsp; &emsp; &emsp;
 
-                        <Decrement
-                            counter={counter}
-                        />
+                            <Decrement
+                                counter={counter}
+                            />
+                            {counter.count}
+                            <Increment
+                                counter={counter}
+                            />
 
-                        {counter.count}
+                        </p>
+                    ))}
 
-                        <Increment
-                            counter={counter}
-                        />
-                    </p>
-                ))}
-            </div>
-
+                </div>
 
         </Fragment>
     );

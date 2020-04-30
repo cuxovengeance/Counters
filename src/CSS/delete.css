@@ -1,18 +1,18 @@
-.buttonCreateCounter {
+.buttonDelete {
     position:absolute;
     bottom: 5%;
-    right:20%;
+    right:80%;
+    float: right;
+}
+.buttonCancel{
+    float: left;
+    margin-left: 20%;
 }
 
-.GetStarted {
-    top: 50%;
-    left: 50%;
-    margin-top: 100px;
-    margin-left: -100px;
-    text-align: center;
-
+.buttonDeleteSecond {
+    float: right;
+    margin-right: 20%;
 }
-
 .modal {
     font-size: 12px;
 }
@@ -32,6 +32,7 @@
     padding: 10px 5px;
     margin: auto;
     text-align: center;
+
 }
 .modal > .close {
     cursor: pointer;
@@ -46,13 +47,3 @@
     border-radius: 18px;
     border: 1px solid #cfcece;
 }
-
-.marginFooterCreateCounterForm {
-    margin-left: 0px;
-}
-
-.WidthName {
-    width: 98%;
-}
-
-

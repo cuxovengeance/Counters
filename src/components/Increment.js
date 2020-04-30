@@ -1,9 +1,9 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useEffect} from "react";
 
 const Increment = ({counter}) => {
 
 
-    const incBtn= (e) => {
+    const incBtn = (e) => {
         e.preventDefault();
 
         const id = counter.id;
