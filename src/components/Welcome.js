@@ -1,5 +1,7 @@
 import React, {Fragment} from "react";
 import '../index.css';
+import '../CSS/welcome.css'
+import icon from '../svg/Welcome.svg'
 
 const Welcome = ({updateShowWelcome}) => {
 
@@ -11,12 +13,19 @@ const Welcome = ({updateShowWelcome}) => {
 
     return(
         <Fragment>
-            <div className="GetStarted">
-                <h1> welcome</h1>
+            <div className="welcomeContent">
+                <div >
+                    <img src={icon} alt="icon"/>
+                </div>
 
-                <button
-                    onClick={hideWelcome}
-                > Get Started</button>
+                <div className="welcomeTitle">
+                    <h1> welcome</h1>
+
+                    <button
+                        onClick={hideWelcome}
+                    > Get Started</button>
+                </div>
+
             </div>
 
         </Fragment>

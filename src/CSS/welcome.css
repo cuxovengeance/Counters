@@ -1,0 +1,20 @@
+.welcomeIcon {
+    top: 50%;
+    left: 50%;
+    margin-top: 100px;
+    text-align: center;
+
+    transform: rotate(-9deg);
+}
+
+.welcomeContent {
+    top: 50%;
+    left: 50%;
+    margin-top: 100px;
+    margin-left: -100px;
+    text-align: center;
+}
+
+.welcomeTitle > .welcomeContent {
+    margin-top: 50px;
+}

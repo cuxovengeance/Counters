@@ -3,9 +3,8 @@ import Popup from "reactjs-popup";
 import '../CSS/delete.css'
 
 
-const Delete = ({updateShowDelete,idToSave}) => {
-
-    /*console.log(JSON.stringify(idToSave));*/
+const Delete = ({updateShowDelete,idToSave,updateShowShare}) => {
+/*console.log(JSON.stringify(idToSave));*/
 
     const deleteCount = () => {
         const id = idToSave.id;
@@ -26,19 +25,22 @@ const Delete = ({updateShowDelete,idToSave}) => {
         <Fragment>
             <Popup trigger={<button className="button buttonDelete"><i className="fas fa-trash-alt"> </i> </button>} modal>
                 {close => (
-                    <div className="modal">
+                    <div>
                         <div className="actions">
                             <button
                                 className="button buttonCancel"
                                 onClick={() => {
                                     close();
-                                    updateShowDelete(false)
+                                    updateShowDelete(false);
+                                    updateShowShare(false);
                                 }}
                             > Cancel </button>
 
                             <button className="buttonDeleteSecond" onClick={() => {
                                 deleteCount();
                                 close();
+                                updateShowDelete(false);
+                                updateShowShare(false);
                             }}> Delete </button>
                         </div>
                     </div>

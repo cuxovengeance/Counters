@@ -1,61 +1,115 @@
-import React, {Fragment, useState, useEffect} from "react";
-import Increment from "./Increment";
-import Decrement from "./Decrement";
-import Delete from "./Delete";
+import React, {Fragment, useEffect, useState} from "react";
+import Counter from "./Counter";
 
 import '../CSS/listCounters.css'
+import TotalCounters from "./TotalCounters";
 
-const ListCounters = ({updateShowDelete,captIdToSave}) => {
+const ListCounters = ({
+                          counters,
+                          counter,
+                          createCounter,
+                          saveCounters,
+                          savecreateCounter,
+                          updateShowDelete,
+                          captIdToSave,
+                          updateShowShare,
+                          setSearch,
+                          search,
+                          setLoadingSearch}) => {
 
-    /*State de los Contadores*/
-    const [counters, updateCounters] = useState([]);
-
-    /*console.log(counters.map(counter => counter.count));*/
- /*   let [setCount, updateCounts] = useState('');
-    const i = counters.map(counter => counter.count);*/
-
+    /*Obtengo los registros*/
     const callGet = async () => {
         await fetch('/api/v1/counter', { method: 'get' })
             .then(res => res.json())
-            .then(res => updateCounters(res))
+            .then(res => {
+                saveCounters(res);
+                setFilteredCounters(res);
+            })
     }
 
-    /*Arreglar que cambie por cada cambio, no que este corriendo siempre*/
-    useEffect(() => {callGet()}, [counters])
+    /*Carga los registros cuando se inicia la app*/
+    useEffect(()=>{callGet()},[])
+
+
+    /*useState para modificar la lista al buscar un contador*/
+    const [filteredCounters , setFilteredCounters] = useState([]);
+
+    useEffect(() => {
+        if(createCounter){
+            saveCounters([
+                ...counters,
+                counter
+            ]);
+        }
+        savecreateCounter(false);
+        callGet();
+        setLoadingSearch(false);
+
+        if(search !== '')
+            setFilteredCounters(
+                counters.filter( counter => {
+                    return counter.title.toLowerCase().includes(search.toLowerCase());
+                })
+            )
+    },[counters/*, search, createCounter,saveCounters,counter, savecreateCounter, setLoadingSearch*/])
+
+
+    /*Borrar texto al dar click en cancelar busqueda*/
+    const erase = () => {
+        setSearch('');
+        document.getElementById('inputSearch').value = '';
+    }
 
     return(
         <Fragment>
+
+            <div className="center">
+                <input
+                    id="inputSearch"
+                    type="text"
+                    placeholder="Search Counters"
+                    onChange={e => {
+                        setSearch(e.target.value);
+                    }}
+                />
+                <button onClick={() => {erase()}}> Cancel </button>
+            </div>
+
+            <div>
+                <TotalCounters
+                    counters={counters}
+                />
+            </div>
+
                 <div className="center">
-                    {/*Realizo un map de Counters[] osea mapeo todo el Array
-                y le paso su id unico, el titulo del counter y finalmente el count*/}
-                    {counters && counters.map(counter => (
-                        <p
+                    {filteredCounters.map(counter => (
+                        <Counter
                             key={counter.id}
-                            onClick={() => {
-                                updateShowDelete(true)
-                                captIdToSave(counter)
-                            }}
+                            counter={counter}
 
-                        >
-                            {counter.title}
+                            updateShowDelete={updateShowDelete}
+                            updateShowShare={updateShowShare}
 
-                            &emsp; &emsp; &emsp;
-
-                            <Decrement
-                                counter={counter}
-                            />
-                            {counter.count}
-                            <Increment
-                                counter={counter}
-                            />
-
-                        </p>
+                            captIdToSave={captIdToSave}
+                        />
                     ))}
-
                 </div>
-
         </Fragment>
     );
 };
 
 export default ListCounters;
+
+/*============= NOTAS & AYUDAS================*/
+/*Counters momentaneo¨** ver la posibilidad de que se ejecute solo cuando
+* el contador de alguno de los registros cambie*/
+
+/*Realizo un map de Counters[] osea mapeo todo el Array
+  y le paso su id unico y el counter completo al elemento Counter.js
+  para que sea el que contenga la info*/
+/*{filteredCounters.map(counter => (*/
+
+/*    contadores de los registros
+    const i = counters.map(counter => counter.count);
+    let count = counters.map(data => data.count);*/
+
