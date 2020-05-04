@@ -4,11 +4,11 @@ import Popup from "reactjs-popup";
 import '../index.css';
 
 const Examples = ({showExamples,updateShowExamples}) => {
-    let drinks = ['Cups of coffee', 'Glasses of Water', 'Glasses of Juice' , 'Beers', 'Glasses of Fantasy Drink', 'Glasses of Milk'];
+    let drinks = ['Cups of Coffee', 'Glasses of Water', 'Glasses of Juice' , 'Beers', 'Glasses of Fantasy Drink', 'Glasses of Milk'];
     let Food = ['Hot Dogs', 'Burgers', 'Fries', 'Cupcakes eaten', 'Cookies', 'Cereal Bars', 'Pizza Slices', 'Bread with Palta'];
-    let Misc = ['Times sneezed', 'Naps', 'Day dreaming', 'Pet my Dog', 'Watched Videos', 'Songs Listened', 'Lost Calls'];
+    let Misc = ['Times Sneezed', 'Naps', 'Day dreaming', 'Pet my Dog', 'Watched Videos', 'Songs Listened', 'Lost Calls'];
 
-    let randomNumber;
+/*    let randomNumber;
     function getRandomDrink() {
         randomNumber = Math.floor(Math.random() * drinks.length);
         return drinks[randomNumber];
@@ -22,7 +22,7 @@ const Examples = ({showExamples,updateShowExamples}) => {
     function getRandomMisc() {
         randomNumber = Math.floor(Math.random() * drinks.length);
         return Misc[randomNumber];
-    }
+    }*/
 
 
     return(
@@ -34,7 +34,7 @@ const Examples = ({showExamples,updateShowExamples}) => {
                                     &times;
                                 </a>
                                 <div className="header"> Examples </div>
-
+                                <hr/>
                                 <div>
                                     <span>Select an example to add it to your counters.</span>
                                 </div>
@@ -42,25 +42,25 @@ const Examples = ({showExamples,updateShowExamples}) => {
 
                                 <h6>Drinks</h6>
                                 <div id="ex1">
-                                    <span className="badge badge-pill badge-light">{getRandomDrink()}</span>
-                                    <span className="badge badge-pill badge-light">{getRandomDrink()}</span>
-                                    <span className="badge badge-pill badge-light">{getRandomDrink()}</span>
+                                    <span className="badge badge-pill badge-light">{/*{getRandomDrink()}*/}{drinks[0]}</span>
+                                    <span className="badge badge-pill badge-light">{drinks[1]}</span>
+                                    <span className="badge badge-pill badge-light">{drinks[2]}</span>
                                 </div>
                                 <br/>
 
                                 <h6>Food</h6>
                                 <div id="ex2">
-                                    <span className="badge badge-pill badge-light">{getRandomFood()}</span>
-                                    <span className="badge badge-pill badge-light">{getRandomFood()}</span>
-                                    <span className="badge badge-pill badge-light">{getRandomFood()}</span>
+                                    <span className="badge badge-pill badge-light">{Food[0]}</span>
+                                    <span className="badge badge-pill badge-light">{Food[1]}</span>
+                                    <span className="badge badge-pill badge-light">{Food[2]}</span>
                                 </div>
                                 <br/>
 
                                 <h6> Misc</h6>
                                 <div id="ex3">
-                                    <span className="badge badge-pill badge-light">{getRandomMisc()}</span>
-                                    <span className="badge badge-pill badge-light">{getRandomMisc()}</span>
-                                    <span className="badge badge-pill badge-light">{getRandomMisc()}</span>
+                                    <span className="badge badge-pill badge-light">{Misc[0]}</span>
+                                    <span className="badge badge-pill badge-light">{Misc[1]}</span>
+                                    <span className="badge badge-pill badge-light">{Misc[2]}</span>
                                 </div>
                             </div>
                         )}

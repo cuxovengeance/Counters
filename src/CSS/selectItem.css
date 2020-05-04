@@ -1,0 +1,13 @@
+.selectItem {
+    position: absolute;
+    left: 2.43%;
+    right: 2.43%;
+    top: 10.45%;
+    bottom: 10.45%;
+
+    /* App Tint Color */
+
+    background: #FF9500;
+    opacity: 0.2;
+    border-radius: 6px;
+}
