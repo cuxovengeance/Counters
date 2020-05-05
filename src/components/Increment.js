@@ -1,5 +1,7 @@
 import React, {Fragment, useEffect} from "react";
 
+import '../CSS/incrementDecrement.css';
+
 const Increment = ({counter}) => {
 
 
@@ -23,7 +25,7 @@ const Increment = ({counter}) => {
 
     return(
         <Fragment>
-            <button onClick={incBtn}> + </button>
+            <button onClick={incBtn}><i className="fas fa-plus configIcons"> </i> </button>
         </Fragment>
     );
 };

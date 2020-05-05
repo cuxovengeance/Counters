@@ -1,0 +1,35 @@
+.layoutDiv{
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    position: absolute;
+    width: 161px;
+    height: 23px;
+    top: 62px;
+    margin-left: auto;
+}
+
+.totalCountersP{
+    position: static;
+    width: 70px;
+    height: 23px;
+    left: 67px;
+    top: calc(50% - 23px/2);
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.02em;
+
+    color: #888B90;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 1;
+    align-self: center;
+    margin: 7px 0px;
+}

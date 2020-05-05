@@ -1,0 +1,73 @@
+.counterDiv {
+    position: static;
+    width: 570px;
+    height: 67px;
+    left: 0px;
+    top: 46px;
+
+
+    background: #FFFFFF;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 1;
+    align-self: flex-start;
+    margin: 0px 0px;
+}
+
+.ThirdDiv > .FirstContainer{
+    width: 97%;
+    max-width: 800px;
+    height: 60px;
+    display: table-row;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.rowTitle {
+    width: 60%;
+    max-width: 400px;
+    align-self: center;
+}
+
+.rowFirst {
+    display: flex;
+}
+
+.rowTitleText{
+   /* position: absolute;*/
+/*    left: 24px;
+    right: 128px;
+    top: 23px;
+    bottom: 21px;*/
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 23px;
+    /* identical to box height, or 110% */
+
+    text-align: initial;
+    letter-spacing: 0.02em;
+
+    /* Text Color */
+
+    color: #212121;
+}
+
+.rowCounters {
+    width: 30%;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: -0.408px;
+
+    /* Text Color */
+
+    color: #212121;
+}
+
+

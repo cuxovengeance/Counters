@@ -1,7 +1,8 @@
 import React, {Fragment, useEffect, useState} from "react";
 import Counter from "./Counter";
 
-import '../CSS/listCounters.css'
+import '../CSS/listCounters.css';
+import '../CSS/search.css';
 import TotalCounters from "./TotalCounters";
 
 const ListCounters = ({
@@ -18,6 +19,7 @@ const ListCounters = ({
                           setLoadingSearch}) => {
     /*useState para modificar la lista al buscar un contador*/
     const [filteredCounters , setFilteredCounters] = useState([]);
+    const [showList, setShowList] = useState(true);
 
     /*Obtengo los registros*/
     const getCounters = () => {
@@ -26,31 +28,29 @@ const ListCounters = ({
             .then(res => {
                 saveCounters(res);
                 setFilteredCounters(res);
+
             })
     };
 
-/*    const AppP = () => {
-        React.useEffect(() => {
-            getCounters().then(counters, console.error);
-        }, []);*/
 
-        /*Carga los registros cuando se inicia la app*/
-  /*      useEffect(() => {
-            getCounters();
-        }, [])
-    */
     /*Backup*/
     useEffect(() => {
+        if( counters.length <= 0){
+            setShowList(false);
+        } else {
+            setShowList(true);
+        }
+
         if (createCounter) {
             saveCounters([
                 ...counters,
                 counter
             ]);
         }
-
         savecreateCounter(false);
         getCounters();
         setLoadingSearch(false);
+
 
         if (search !== '')
             setFilteredCounters(
@@ -58,6 +58,7 @@ const ListCounters = ({
                     return counter.title.toLowerCase().includes(search.toLowerCase());
                 })
             )
+
     }, [counters, search, createCounter,saveCounters,counter, savecreateCounter, setLoadingSearch]);
 
 
@@ -67,12 +68,13 @@ const ListCounters = ({
         document.getElementById('inputSearch').value = '';
     }
 
-
         return (
             <Fragment>
 
-                <div className="center">
+                {/*=========SEARCH BAR ===========*/}
+                <div className="searchDiv">
                     <input
+                        className="searchInput"
                         id="inputSearch"
                         type="text"
                         placeholder="Search Counters"
@@ -80,37 +82,54 @@ const ListCounters = ({
                             setSearch(e.target.value);
                         }}
                     />
-                    <button onClick={() => {
+                    <button
+                        className="cancelButton"
+                        onClick={() => {
                         erase()
-                    }}> Cancel
+                    }}>
+                        <label
+                            className="labelCancel"
+                        >Cancel</label>
                     </button>
                 </div>
 
-                <div>
+                {/*=========TOTAL COUNTERS=========*/}
+                <div className=".container totalTimes divTotalConter">
                     <TotalCounters
                         counters={counters}
                     />
                 </div>
 
-                <div className="center" >
-                    {filteredCounters.map((counter) => (
-                        <div
-                            /*id={JSON.stringify(counter.id)}*/
-                            class='prueba'
-                            key = {counter.id}
-                        >
-                            <Counter
-                                key={counter.id}
-                                counter={counter}
-                                counters={counters}
+                <div className="divContent">
+                    {/*==========LIST COUNTERS==========*/}
+                    {showList ?
+                         <div className="FirstContainer">
+                            {filteredCounters.map((counter) => (
+                                <div
+                                    /*id={JSON.stringify(counter.id)}*/
+                                    key={counter.id}
+                                    className="SecondContainer"
+                                >
+                                    <Counter
+                                        key={counter.id}
+                                        counter={counter}
+                                        counters={counters}
 
-                                updateShowDelete={updateShowDelete}
-                                updateShowShare={updateShowShare}
+                                        updateShowDelete={updateShowDelete}
+                                        updateShowShare={updateShowShare}
 
-                                captIdToSave={captIdToSave}
-                            />
+                                        captIdToSave={captIdToSave}
+                                    />
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    : <div className="boxNoCounters">
+                            <h2 className="h1NoContent">No counters yet</h2>
+                            <br/>
+                            <p className="pNoContent">“When I started counting my blessings, my whole life turned around.”</p>
+                            <p className="pNoContent">—Willie Nelson</p>
+                    </div>}
+
                 </div>
             </Fragment>
         );
@@ -167,3 +186,14 @@ id={JSON.stringify(counter.id)} ** en el id del div
             item.style.backgroundColor = 'white';
         }
     }*/
+
+/*    const AppP = () => {
+        React.useEffect(() => {
+            getCounters().then(counters, console.error);
+        }, []);*/
+
+/*Carga los registros cuando se inicia la app*/
+/*      useEffect(() => {
+          getCounters();
+      }, [])
+  */

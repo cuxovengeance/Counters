@@ -1,6 +1,7 @@
 import React, {Fragment, useState} from "react";
 import Swal from "sweetalert2";
 
+import '../CSS/createCounter.css';
 /*import '../index.css';*/
 
 const CreateCounter = ({saveCounter,savecreateCounter,updateShowExamples}) => {
@@ -69,8 +70,11 @@ const CreateCounter = ({saveCounter,savecreateCounter,updateShowExamples}) => {
 
     return(
         <Fragment>
+            <hr className="positionSeparator"/>
 
-            <button onClick={() => {openPopup()}} type="button" className="btn btn-primary buttonCreateCounter" data-toggle="modal" data-target="#exampleModal">Create Counter</button>
+            <button onClick={() => {openPopup()}} type="button" className="btn buttonCreate" data-toggle="modal" data-target="#exampleModal">
+                <i className="fas fa-plus buttonCreateIcon "> </i>
+            </button>
             <div className="modal fade"
                  id="exampleModal"
                  tabIndex="-1"

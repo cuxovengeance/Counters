@@ -1,0 +1,11 @@
+.configIcons {
+    width: 14px;
+    height: 2px;
+    right: 87px;
+    top: 33px;
+    color: #FF9500;
+}
+
+button :hover {
+    background-color: transparent;
+}

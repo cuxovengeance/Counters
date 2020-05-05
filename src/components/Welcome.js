@@ -18,12 +18,27 @@ const Welcome = ({updateShowWelcome}) => {
                     <img src={icon} alt="icon"/>
                 </div>
 
-                <div className="welcomeTitle">
-                    <h1> welcome</h1>
+                <br/><br/><br/>
+                <div >
+                    <div className="welcomeTitle">
+                        <h1> Welcome to Counters</h1>
+                    </div>
+                    <br/>
+
+                    <div className="">
+                    <p
+                        className="description "
+                    >Capture cups of lattes, frapuccinos,
+                        or anything else that can be counted. </p>
+                    </div>
 
                     <button
                         onClick={hideWelcome}
-                    > Get Started</button>
+                        className="getStartedButton"
+                    ><label
+                        className="labelGetStarted"
+                    >Get Started</label>
+                    </button>
                 </div>
 
             </div>

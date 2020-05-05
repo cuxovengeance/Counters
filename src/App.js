@@ -40,6 +40,8 @@ function App() {
     /*State para Ejemplos*/
     const [showExamples, updateShowExamples] = useState(false);
 
+
+
     return (
         <Fragment>
             {/*Si showWelcome es true, entonces que muestre WelcomeScreen*/}
@@ -50,24 +52,26 @@ function App() {
             : /*Si el showWelcome es false, que muestre el mainScreen*/
                 <Router>
                     {/*Lista de contadores con busqueda incluida*/}
-                    <ListCounters
-                        counters={counters}
 
-                        createCounter={createCounter}
-                        saveCounters={saveCounters}
-                        counter={counter}
-                        savecreateCounter={savecreateCounter}
+                        <ListCounters
+                            counters={counters}
 
-                        updateShowDelete={updateShowDelete}
-                        updateShowShare={updateShowShare}
-                        captIdToSave={captIdToSave}
+                            createCounter={createCounter}
+                            saveCounters={saveCounters}
+                            counter={counter}
+                            savecreateCounter={savecreateCounter}
 
-                        setSearch={setSearch}
-                        search={search}
+                            updateShowDelete={updateShowDelete}
+                            updateShowShare={updateShowShare}
+                            captIdToSave={captIdToSave}
 
-                        setLoadingSearch={setLoadingSearch}
-                        loading={loading}
-                    />
+                            setSearch={setSearch}
+                            search={search}
+
+                            setLoadingSearch={setLoadingSearch}
+                            loading={loading}
+
+                        />
 
                     {/*Crear Contador Nuevo*/}
                     <CreateCounter

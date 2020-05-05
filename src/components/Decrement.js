@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import '../CSS/incrementDecrement.css';
 
 const Decrement = ({counter}) => {
 
@@ -20,7 +21,7 @@ const Decrement = ({counter}) => {
     }
     return(
         <Fragment>
-            <button onClick={decBtn}> - </button>
+            <button onClick={decBtn}><i className="fas fa-minus configIcons"> </i> </button>
         </Fragment>
     );
 };

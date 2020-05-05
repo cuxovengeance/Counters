@@ -1,8 +1,114 @@
-.center{
-    top: 50%;
-    left: 50%;
-    margin-top: 50px;
-    margin-left: -100px;
+.divContent {
+    /*background-color: #FF9500;*/
+    width: 50%;
+    max-width: 800px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 90px;
+    text-align: center;
+    flex-direction: column;
+}
+
+.divTotalConter {
+    width: 50%;
+    max-width: 800px;
+    height: 0.1%;
+    margin: 0 auto;
+    margin-top: 90px;
     text-align: center;
 }
 
+.boxNoCounters {
+    margin:0px auto;
+    margin-top: 20%;
+}
+
+.h1NoContent {
+    position: static;
+    width: 161px;
+    height: 30px;
+    left: 76.5px;
+    top: 0px;
+
+    /* Large Title */
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 30px;
+    /* identical to box height */
+
+
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 0;
+    align-self: center;
+    margin: 0px auto;
+}
+.pNoContent {
+    position: static;
+    width: 314px;
+    height: 82px;
+    left: 0px;
+    top: 50px;
+
+    /* Body */
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 23px;
+    text-align: center;
+
+    /* Black */
+
+    color: #4A4A4A;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 1;
+    align-self: center;
+    margin: 0px 20px;
+}
+
+.totalTimes > .divContent {
+    position:absolute;
+    top:0;
+    right:0;
+}
+
+/*List Counters*/
+
+.listCounters {
+    background-color: white;
+    margin-bottom: auto;
+    margin-left: 10px;
+}
+
+.FirstContainer {
+    width: 97%;
+    max-width: 800px;
+    height: 60px;
+    display: table-row;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.SecondContainer > .FirstContainer{
+    width: 97%;
+    max-width: 800px;
+    height: 60px;
+    display: table-row;
+    margin-right: auto;
+    margin-left: auto;
+}

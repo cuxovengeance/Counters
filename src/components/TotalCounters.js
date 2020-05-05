@@ -1,4 +1,5 @@
 import React from "react";
+import '../CSS/totalCounters.css';
 
 const TotalCounters = ({counters}) => {
     let countTotal = counters.map(data => data.count);
@@ -10,7 +11,12 @@ const TotalCounters = ({counters}) => {
 
 
     return(
-        <p>{total}</p>
+        <div className="layoutDiv">
+            <p
+                className="totalCountersP"
+            >{total} times</p>
+        </div>
+
     );
 };
 

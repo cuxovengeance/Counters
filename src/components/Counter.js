@@ -2,32 +2,40 @@ import React, {useState} from "react";
 import Increment from "./Increment";
 import Decrement from "./Decrement";
 
+import '../CSS/counter.css'
+
 const Counter = ({counter,updateShowDelete,captIdToSave,updateShowShare}) => {
 
-
+    /*counterDiv container*/
     return (
-        <div>
-            <p
-                id="selection"
-                onClick={() => {
-                    updateShowDelete(true);
-                    updateShowShare(true);
-                    captIdToSave(counter);
-                }}
-            >
-                {counter.title}
+            <div className="ThirdDiv">
+                <p
+                    id="selection"
+                    className="rowFirst"
+                    onClick={() => {
+                        updateShowDelete(true);
+                        updateShowShare(true);
+                        captIdToSave(counter);
+                    }}
+                >
+                    <div className="rowTitle rowTitleText">{counter.title}</div>
 
-                &emsp; &emsp; &emsp;
+                    &emsp; &emsp; &emsp;
 
-                <Decrement
-                    counter={counter}
-                />
-                {counter.count}
-                <Increment
-                    counter={counter}
-                />
-            </p>
-        </div>
+                    <div
+                        className="rowCounters"
+                    >
+                        <Decrement
+                            counter={counter}
+                        />
+                        {counter.count}
+
+                        <Increment
+                            counter={counter}
+                        />
+                    </div>
+                </p>
+            </div>
     );
 }
 export default Counter;
