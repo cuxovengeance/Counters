@@ -33,3 +33,29 @@
     align-self: center;
     margin: 7px 0px;
 }
+
+.totalItemsP {
+
+    position: static;
+    width: 70px;
+    height: 23px;
+    left: 67px;
+    top: calc(50% - 23px/2);
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.02em;
+
+    color: #4A4A4A;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 1;
+    align-self: center;
+    margin: 7px 0px;
+}

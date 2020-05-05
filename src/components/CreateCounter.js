@@ -83,12 +83,14 @@ const CreateCounter = ({saveCounter,savecreateCounter,updateShowExamples}) => {
                  aria-hidden="true">
                 <div className="modal-dialog " role="document" >
                     <div className="modal-content modalSizeCreate">
+
                         <div className="modal-header headerCreate">
                             <h5 className="modal-title TitleCreateCounterModal" id="exampleModalLabel">Create Counter</h5>
                             <button type="button" className="close closeModalCreate" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-
+                            {/*{/!*Formulario para agregar un Counter*!/}*/}
+                            <form onSubmit={addCounter} >
                             {/*<button type="button" className="btn" data-dismiss="modal">Close</button>*/}
                             <button
                                 type="submit"
@@ -98,10 +100,6 @@ const CreateCounter = ({saveCounter,savecreateCounter,updateShowExamples}) => {
                                 onClick={() => {updateShowExamples(false);}}
                             ><label className="textSaveCounterButton">Save</label> </button>
 
-                        </div>
-                        <div className="modal-body">
-                            {/*{/!*Formulario para agregar un Counter*!/}*/}
-                            <form onSubmit={addCounter} >
                               {/*  {/!*En caso de que exista un Error mostrará un mensaje*!/}*/}
                                 {error ?
                                     <Error/>
@@ -120,8 +118,6 @@ const CreateCounter = ({saveCounter,savecreateCounter,updateShowExamples}) => {
                                 />
                                 <br/>
                                 <br/>
-
-
 
                                     <div className="container marginFooterCreateCounterForm">
                                         <span className="text-muted" data-dismiss="modal">Give it a name. Creative block? See <u><span

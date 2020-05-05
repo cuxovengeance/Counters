@@ -9,9 +9,11 @@ const TotalCounters = ({counters}) => {
         total += countTotal[i];
     }
 
+    let totalItems = counters.length;
 
     return(
         <div className="layoutDiv">
+            <p className="totalItemsP"> {totalItems} items </p> &emsp;
             <p
                 className="totalCountersP"
             >{total} times</p>

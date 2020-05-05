@@ -1,0 +1,5 @@
+.alertError {
+    position: fixed;
+    margin-left: -200px;
+    margin-top: 15px;
+}

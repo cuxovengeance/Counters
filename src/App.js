@@ -103,6 +103,9 @@ function App() {
                      <Examples
                          showExamples={showExamples}
                          updateShowExamples={updateShowExamples}
+
+                         saveCounter={saveCounter}
+                         savecreateCounter={savecreateCounter}
                      />
                     : null}
 
