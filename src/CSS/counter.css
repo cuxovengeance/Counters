@@ -26,13 +26,14 @@
 }
 
 .rowTitle {
-    width: 60%;
+    width: 70%;
     max-width: 400px;
     align-self: center;
 }
 
 .rowFirst {
     display: flex;
+    height: 50px;
 }
 
 .rowTitleText{
@@ -62,12 +63,13 @@
     font-weight: 600;
     font-size: 20px;
     line-height: 22px;
-    text-align: center;
+    text-align: right;
     letter-spacing: -0.408px;
 
     /* Text Color */
 
     color: #212121;
+    margin-top: 15px;
 }
 
 

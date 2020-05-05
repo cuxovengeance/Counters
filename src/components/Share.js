@@ -25,19 +25,21 @@ const Share = ({updateShowShare,idToSave}) => {
     }
     return(
         <Popup
-            trigger={<button className="button buttonShare "> <i className="fa fa-share-square-o"> </i> </button>}
+            trigger={<button className="button buttonShare">
+                <i className="fa fa-share-square-o iconShare"> </i>
+            </button>}
             position="top center"
             on="hover"
             className="popupShare"
         >
             <div>
-                <label className="labelShare"> Share 1 Counter</label>
-                <label className="labelShare"> {completeText}</label>
-                <img src={paperNote} className="paperNotecss" alt="paperNote"/>
+                <label className="labelShare"> Share 1 Counter&nbsp;</label>
+                <label className="labelShare">{completeText}</label>
+                {/*<img src={paperNote} className="paperNotecss" alt="paperNote"/>*/}
 
 
                 <CopyToClipboard text={completeText}>
-                    <button onClick={alertSuccess} className="button buttonCopy"> Copy </button>
+                    <button onClick={alertSuccess} className="button buttonCopy"><label className="textCopyButton">Copy</label> </button>
                 </CopyToClipboard>
             </div>
 

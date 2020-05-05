@@ -25,7 +25,8 @@ const Increment = ({counter}) => {
 
     return(
         <Fragment>
-            <button onClick={incBtn}><i className="fas fa-plus configIcons"> </i> </button>
+            <i onClick={incBtn} className="fas fa-plus configIcons"> </i>
+            {/*<button onClick={incBtn}><i className="fas fa-plus configIcons"> </i> </button>*/}
         </Fragment>
     );
 };

@@ -2,7 +2,7 @@ import React, {Fragment, useState} from "react";
 import Swal from "sweetalert2";
 
 import '../CSS/createCounter.css';
-/*import '../index.css';*/
+import Error from "./Error";
 
 const CreateCounter = ({saveCounter,savecreateCounter,updateShowExamples}) => {
 
@@ -81,47 +81,53 @@ const CreateCounter = ({saveCounter,savecreateCounter,updateShowExamples}) => {
                  role="dialog"
                  aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
-                <div className="modal-dialog" role="document" >
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Create New Counter</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <div className="modal-dialog " role="document" >
+                    <div className="modal-content modalSizeCreate">
+                        <div className="modal-header headerCreate">
+                            <h5 className="modal-title TitleCreateCounterModal" id="exampleModalLabel">Create Counter</h5>
+                            <button type="button" className="close closeModalCreate" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
+
+                            {/*<button type="button" className="btn" data-dismiss="modal">Close</button>*/}
+                            <button
+                                type="submit"
+                                id="submit"
+                                className="btn saveCounterButton"
+                                value="Save"
+                                onClick={() => {updateShowExamples(false);}}
+                            ><label className="textSaveCounterButton">Save</label> </button>
+
                         </div>
                         <div className="modal-body">
                             {/*{/!*Formulario para agregar un Counter*!/}*/}
                             <form onSubmit={addCounter} >
                               {/*  {/!*En caso de que exista un Error mostrará un mensaje*!/}*/}
-                                {error ? alert("ERROR")
+                                {error ?
+                                    <Error/>
                                     : null}
 
-                                <label className="modal "> Name </label>
+                                <div>
+                                    <label className="nameCreateCounter "> Name </label>
+                                </div>
+
                                 <input
                                     type="text"
                                     placeholder="Cups of Coffee"
-                                    className="WidthName"
+                                    className="WidthName inputCreateCounter"
                                     value={title}
                                     onChange={ e => saveName(e.target.value)}
                                 />
                                 <br/>
                                 <br/>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button
-                                        type="submit"
-                                        id="submit"
-                                        className="button-primary"
-                                        value="Save"
-                                        onClick={() => {updateShowExamples(false);}}
-                                    > Save Counter</button>
+
+
 
                                     <div className="container marginFooterCreateCounterForm">
                                         <span className="text-muted" data-dismiss="modal">Give it a name. Creative block? See <u><span
                                             onClick={()=> showExamplesPopup(true)}
                                         > examples. </span></u> </span>
                                     </div>
-                                </div>
                             </form>
                         </div>
                     </div>

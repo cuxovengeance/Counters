@@ -21,7 +21,8 @@ const Decrement = ({counter}) => {
     }
     return(
         <Fragment>
-            <button onClick={decBtn}><i className="fas fa-minus configIcons"> </i> </button>
+            <i onClick={decBtn} className="fas fa-minus configIcons"> </i>
+            {/*<button onClick={decBtn}><i className="fas fa-minus configIcons"> </i> </button>*/}
         </Fragment>
     );
 };

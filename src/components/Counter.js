@@ -20,15 +20,13 @@ const Counter = ({counter,updateShowDelete,captIdToSave,updateShowShare}) => {
                 >
                     <div className="rowTitle rowTitleText">{counter.title}</div>
 
-                    &emsp; &emsp; &emsp;
-
                     <div
                         className="rowCounters"
                     >
                         <Decrement
                             counter={counter}
                         />
-                        {counter.count}
+                        &emsp;{counter.count}&emsp;
 
                         <Increment
                             counter={counter}

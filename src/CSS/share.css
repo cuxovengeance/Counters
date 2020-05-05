@@ -3,16 +3,21 @@
     bottom: 5%;
     right: 70%;
     float: right;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 .labelShare {
     text-align: center;
+    font-size: 14px;
 }
 
 .popupShare{
     position: absolute;
     left: 15px;
     right: 87px;
+    height: 100px;
     top: 800px;
     bottom: 64px;
 
@@ -23,8 +28,37 @@
     border-radius: 10px;
 }
 
-.buttonCopy > .popupShare{
-    margin-bottom: 20%;
+.buttonCopy {
+    margin-bottom: 1%;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.textCopyButton {
+    position: static;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 23px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* App Tint Color */
+
+    color: #FF9500;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 0;
+    align-self: center;
+    margin: auto;
 }
 
 .paperNotecss > .popupShare{
@@ -39,4 +73,9 @@
     box-sizing: border-box;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
     border-radius: 4px;
+}
+
+.iconShare {
+    color: #2B2B2B;
+    font-size: medium;
 }
