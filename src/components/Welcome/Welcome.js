@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
-import '../index.css';
-import '../CSS/welcome.css'
-import icon from '../svg/Welcome.svg'
+import '../../index.css';
+import './welcome.css'
+import icon from './svg/Welcome.svg'
 
 const Welcome = ({updateShowWelcome}) => {
 
@@ -19,13 +19,14 @@ const Welcome = ({updateShowWelcome}) => {
                 </div>
 
                 <br/><br/><br/>
+
                 <div >
                     <div className="welcomeTitle">
                         <h1> Welcome to Counters</h1>
                     </div>
                     <br/>
 
-                    <div className="">
+                    <div>
                     <p
                         className="description "
                     >Capture cups of lattes, frapuccinos,
@@ -35,9 +36,7 @@ const Welcome = ({updateShowWelcome}) => {
                     <button
                         onClick={hideWelcome}
                         className="getStartedButton"
-                    ><label
-                        className="labelGetStarted"
-                    >Get Started</label>
+                    > <label className="labelGetStarted">Get Started</label>
                     </button>
                 </div>
 

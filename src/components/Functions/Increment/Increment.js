@@ -1,9 +1,7 @@
-import React, {Fragment, useEffect} from "react";
+import React, {Fragment} from "react";
+import './incrementDecrement.css';
 
-import '../CSS/incrementDecrement.css';
-
-const Increment = ({counter}) => {
-
+const Increment = ({counter,counters,saveCounters}) => {
 
     const incBtn = (e) => {
         e.preventDefault();
@@ -19,14 +17,15 @@ const Increment = ({counter}) => {
             body: JSON.stringify(body)
         })
             .then(res => res.json())
-            .then(res => console.log(res))
-    }
-
+            .then(res => {
+                counters = counters.map(data => data.id === res.id ? res : data);
+                saveCounters(counters);
+            })
+    };
 
     return(
         <Fragment>
             <i onClick={incBtn} className="fas fa-plus configIcons"> </i>
-            {/*<button onClick={incBtn}><i className="fas fa-plus configIcons"> </i> </button>*/}
         </Fragment>
     );
 };

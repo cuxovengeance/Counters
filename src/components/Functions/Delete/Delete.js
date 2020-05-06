@@ -1,12 +1,11 @@
 import React, {Fragment} from "react";
-import '../CSS/delete.css'
+import './delete.css'
 
-
-const Delete = ({updateShowDelete,idToSave,updateShowShare}) => {
-/*console.log(JSON.stringify(idToSave));*/
+const Delete = ({updateShowDelete,idToSave,updateShowShare,saveCounters,counters}) => {
 
     const deleteCount = () => {
         const id = idToSave.id;
+
         const body = {
             'id': id
         };
@@ -17,9 +16,12 @@ const Delete = ({updateShowDelete,idToSave,updateShowShare}) => {
             body: JSON.stringify(body)
         })
             .then(res => res.json())
-            .then(res => console.log(res))
+            .then(res => {
+                counters = counters.filter(data => data.id !== res);
+                saveCounters(counters);
+                return null;
+            })
     }
-
 
     return(
         <Fragment>
@@ -74,6 +76,8 @@ const Delete = ({updateShowDelete,idToSave,updateShowShare}) => {
 };
 
 export default Delete;
+
+/*console.log(JSON.stringify(idToSave));*/
 
 /*<Popup trigger={<button className="button buttonDelete"><i className="fas fa-trash-alt"> </i> </button>} modal>
                     {close => (

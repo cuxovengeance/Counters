@@ -1,5 +1,5 @@
 import React from "react";
-import '../CSS/totalCounters.css';
+import './totalCounters.css';
 
 const TotalCounters = ({counters}) => {
     let countTotal = counters.map(data => data.count);
@@ -14,11 +14,8 @@ const TotalCounters = ({counters}) => {
     return(
         <div className="layoutDiv">
             <p className="totalItemsP"> {totalItems} items </p> &emsp;
-            <p
-                className="totalCountersP"
-            >{total} times</p>
+            <p className="totalCountersP">{total} times</p>
         </div>
-
     );
 };
 

@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import '../CSS/AlertError.css'
+import './AlertError.css'
 
 const Error = () => {
     return(

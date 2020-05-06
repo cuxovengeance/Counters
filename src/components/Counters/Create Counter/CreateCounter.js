@@ -1,20 +1,14 @@
 import React, {Fragment, useState} from "react";
 import Swal from "sweetalert2";
 
-import '../CSS/createCounter.css';
-import Error from "./Error";
+import './createCounter.css';
+import Error from "../Errors/Error";
 
-const CreateCounter = ({saveCounter,savecreateCounter,updateShowExamples}) => {
+const CreateCounter = ({savecreateCounter,saveCounters,counters,updateShowExamples}) => {
 
-    /*State */
-    const [title, saveName] = useState('');
-
-    /*Validar Contador - lo inicio en falso porque en un principio no tengo ningun error*/
-    const [error, saveError] = useState(false);
-
-    /*Cerrar: empieza en false para que al hacer click en el boton pase a true*/
-    const[isOpen, updateIsOpen] = useState(false);
-
+    const [title, saveName] = useState('');   /*State para captar el nombre*/
+    const [error, saveError] = useState(false);  /*Validar Contador - lo inicio en falso porque en un principio no tengo ningun error*/
+    const[isOpen, updateIsOpen] = useState(false);  /*Cerrar: empieza en false para que al hacer click en el boton pase a true*/
 
     const openPopup = () => {
         updateIsOpen(true);
@@ -28,6 +22,7 @@ const CreateCounter = ({saveCounter,savecreateCounter,updateShowExamples}) => {
             saveError(true);
             return;
         }
+
         /*Si pasa la validación*/
         saveError(false);
 
@@ -43,10 +38,15 @@ const CreateCounter = ({saveCounter,savecreateCounter,updateShowExamples}) => {
                 body: JSON.stringify(counter)
             })
                 .then(res => res.json())
-                .then(res => saveCounter(res))
+                .then(res => {
+                    saveCounters([...counters,res])
+                })
         }
 
-        /*el saveCounter es para guardar el contador que estoy creando*/
+        /*el saveCounter es para guardar el contador que estoy creando, en
+        * este caso hago una copia de lo que ya esta y agrego el nuevo
+        * dentro del mismo arreglo*/
+
         /*Le paso los datos a la API para hacer el POST*/
         callApi(counter);
 
@@ -61,12 +61,9 @@ const CreateCounter = ({saveCounter,savecreateCounter,updateShowExamples}) => {
             'Counter Saved!',
             'success'
         )
-        /*Cerrar*/
     };
 
-    const showExamplesPopup = () => {
-        updateShowExamples(true)
-    }
+    const showExamplesPopup = () => {updateShowExamples(true)}
 
     return(
         <Fragment>
@@ -75,30 +72,24 @@ const CreateCounter = ({saveCounter,savecreateCounter,updateShowExamples}) => {
             <button onClick={() => {openPopup()}} type="button" className="btn buttonCreate" data-toggle="modal" data-target="#exampleModal">
                 <i className="fas fa-plus buttonCreateIcon "> </i>
             </button>
-            <div className="modal fade"
-                 id="exampleModal"
-                 tabIndex="-1"
-                 role="dialog"
-                 aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
+
+            <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog " role="document" >
                     <div className="modal-content modalSizeCreate">
-
                         <div className="modal-header headerCreate">
                             <h5 className="modal-title TitleCreateCounterModal" id="exampleModalLabel">Create Counter</h5>
                             <button type="button" className="close closeModalCreate" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            {/*{/!*Formulario para agregar un Counter*!/}*/}
+
                             <form onSubmit={addCounter} >
-                            {/*<button type="button" className="btn" data-dismiss="modal">Close</button>*/}
                             <button
                                 type="submit"
                                 id="submit"
                                 className="btn saveCounterButton"
                                 value="Save"
                                 onClick={() => {updateShowExamples(false);}}
-                            ><label className="textSaveCounterButton">Save</label> </button>
+                            >{/*<label className="textSaveCounterButton">Save</label> */} Save </button>
 
                               {/*  {/!*En caso de que exista un Error mostrará un mensaje*!/}*/}
                                 {error ?
@@ -116,15 +107,19 @@ const CreateCounter = ({saveCounter,savecreateCounter,updateShowExamples}) => {
                                     value={title}
                                     onChange={ e => saveName(e.target.value)}
                                 />
+
                                 <br/>
                                 <br/>
 
                                     <div className="container marginFooterCreateCounterForm">
-                                        <span className="text-muted" data-dismiss="modal">Give it a name. Creative block? See <u><span
-                                            onClick={()=> showExamplesPopup(true)}
-                                        > examples. </span></u> </span>
+                                        <span
+                                            className="text-muted"
+                                            data-dismiss="modal">
+                                            Give it a name. Creative block? See <u><span onClick={()=> showExamplesPopup(true)}> examples.</span></u></span>
                                     </div>
+
                             </form>
+
                         </div>
                     </div>
                 </div>

@@ -1,72 +1,70 @@
-import React, {Fragment, useEffect, useState} from "react";
-import Counter from "./Counter";
-
-import '../CSS/listCounters.css';
-import '../CSS/search.css';
-import TotalCounters from "./TotalCounters";
+import React, {Fragment, useCallback, useEffect, useState} from "react";
+import Counter from "../Counter/Counter";
+import TotalCounters from "../TotalCounters/TotalCounters";
+import './listCounters.css';
+import './Search/search.css';
 
 const ListCounters = ({
                           counters,
-                          counter,
-                          createCounter,
                           saveCounters,
-                          savecreateCounter,
                           updateShowDelete,
                           captIdToSave,
+                          idToSave,
                           updateShowShare,
                           setSearch,
-                          search,
-                          setLoadingSearch}) => {
+                          search}) => {
+
     /*useState para modificar la lista al buscar un contador*/
     const [filteredCounters , setFilteredCounters] = useState([]);
     const [showList, setShowList] = useState(true);
 
     /*Obtengo los registros*/
-    const getCounters = () => {
-         fetch('/api/v1/counter', { method: 'get' })
+    const getCounters = () => (
+        fetch('/api/v1/counter', { method: 'get' })
             .then(res => res.json())
-            .then(res => {
-                saveCounters(res);
-                setFilteredCounters(res);
+    );
 
-            })
-    };
-
-
-    /*Backup*/
+    /*UseEffect para mostrar la lista al iniciar*/
     useEffect(() => {
-        if( counters.length <= 0){
-            setShowList(false);
-        } else {
-            setShowList(true);
-        }
+        getCounters().then(res => {
+            saveCounters(res)
+            res.length && setShowList(true);
+            res.length && setFilteredCounters(res);
+        })
+    },[]);
 
-        if (createCounter) {
-            saveCounters([
-                ...counters,
-                counter
-            ]);
-        }
-        savecreateCounter(false);
-        getCounters();
-        setLoadingSearch(false);
-
-
-        if (search !== '')
+    /*UseEffect Para realizar la busqueda de un Contador*/
+    useEffect(() => {
+        if(search !== ''){
             setFilteredCounters(
                 counters.filter(counter => {
                     return counter.title.toLowerCase().includes(search.toLowerCase());
                 })
             )
+        } else {
+            setFilteredCounters(counters);
+        }
+    },[search]);
 
-    }, [counters, search, createCounter,saveCounters,counter, savecreateCounter, setLoadingSearch]);
+    /*UseEffect para crear y actualizar al borrar un registro*/
+    useEffect(() => {
+        if(!counters.length){
+            setShowList(false);
+        } else {
+            setFilteredCounters(counters)
+            setShowList(true);
+        }
 
+    },[counters]);
 
-        /*Borrar texto al dar click en cancelar busqueda*/
+    /*Borrar texto al dar click en cancelar busqueda*/
     const erase = () => {
         setSearch('');
         document.getElementById('inputSearch').value = '';
     }
+
+    /*useCallback para detectar registro seleccionado*/
+    const selectCounter = useCallback(data => captIdToSave(data), [idToSave]);
 
         return (
             <Fragment>
@@ -106,7 +104,6 @@ const ListCounters = ({
                          <div className="FirstContainer">
                             {filteredCounters.map((counter) => (
                                 <div
-                                    /*id={JSON.stringify(counter.id)}*/
                                     key={counter.id}
                                     className="SecondContainer"
                                 >
@@ -114,11 +111,13 @@ const ListCounters = ({
                                         key={counter.id}
                                         counter={counter}
                                         counters={counters}
+                                        saveCounters={saveCounters}
 
                                         updateShowDelete={updateShowDelete}
                                         updateShowShare={updateShowShare}
 
                                         captIdToSave={captIdToSave}
+                                        selectCounter={selectCounter}
                                     />
                                 </div>
                             ))}
@@ -197,3 +196,33 @@ id={JSON.stringify(counter.id)} ** en el id del div
           getCounters();
       }, [])
   */
+
+/*id={JSON.stringify(counter.id)}*/
+
+/*   ===========RESPALDO ANTERIOR===============
+useEffect(() => {
+    if( counters.length <= 0){
+        setShowList(false);
+    } else {
+        setShowList(true);
+    }
+
+    if (createCounter) {
+        saveCounters([
+            ...counters,
+            counter
+        ]);
+    }
+    savecreateCounter(false);
+    getCounters();
+    setLoadingSearch(false);
+
+
+    if (search !== '')
+        setFilteredCounters(
+            counters.filter(counter => {
+                return counter.title.toLowerCase().includes(search.toLowerCase());
+            })
+        )
+
+}, [counters, search, createCounter,saveCounters,counter, savecreateCounter, setLoadingSearch]);*/

@@ -1,20 +1,16 @@
 import React from "react";
 import Popup from "reactjs-popup";
-import Swal from "sweetalert2";
 import {CopyToClipboard} from "react-copy-to-clipboard";
+import Swal from "sweetalert2";
 
+import './share.css'
+import paperNote from './svg/PaperNote.svg';
 
-import '../CSS/share.css'
-import paperNote from '../svg/PaperNote.svg'
+const Share = ({idToSave}) => {
 
-
-const Share = ({updateShowShare,idToSave}) => {
-    /*console.log(JSON.stringify(idToSave))*/
     const title = idToSave.title;
     const count = idToSave.count;
     const completeText = count + " x " + title;
-
-    /*console.log(completeText);*/
 
     const alertSuccess = () => {
         Swal.fire(
@@ -23,6 +19,7 @@ const Share = ({updateShowShare,idToSave}) => {
             'success'
         )
     }
+
     return(
         <Popup
             trigger={<button className="button buttonShare">
@@ -37,7 +34,6 @@ const Share = ({updateShowShare,idToSave}) => {
                 <label className="labelShare">{completeText}</label>
                 {/*<img src={paperNote} className="paperNotecss" alt="paperNote"/>*/}
 
-
                 <CopyToClipboard text={completeText}>
                     <button onClick={alertSuccess} className="button buttonCopy"><label className="textCopyButton">Copy</label> </button>
                 </CopyToClipboard>
@@ -48,3 +44,6 @@ const Share = ({updateShowShare,idToSave}) => {
 };
 
 export default Share;
+
+/*console.log(JSON.stringify(idToSave))*/
+/*console.log(completeText);*/

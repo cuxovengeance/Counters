@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
-import '../CSS/incrementDecrement.css';
+import '../Increment/incrementDecrement.css';
 
-const Decrement = ({counter}) => {
+const Decrement = ({counter,counters,saveCounters}) => {
 
     const decBtn= (e) => {
         e.preventDefault();
@@ -17,12 +17,14 @@ const Decrement = ({counter}) => {
             body: JSON.stringify(body)
         })
             .then(res => res.json())
-            .then(res => console.log(res))
+            .then(res => {
+                counters = counters.map(data => data.id === res.id ? res : data);
+                saveCounters(counters);
+            })
     }
     return(
         <Fragment>
             <i onClick={decBtn} className="fas fa-minus configIcons"> </i>
-            {/*<button onClick={decBtn}><i className="fas fa-minus configIcons"> </i> </button>*/}
         </Fragment>
     );
 };
