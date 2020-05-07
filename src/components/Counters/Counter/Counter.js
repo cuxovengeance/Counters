@@ -1,22 +1,15 @@
-import React from "react";
+import React, {Fragment} from "react";
 import Increment from "../../Functions/Increment/Increment";
 import Decrement from "../../Functions/Decrement/Decrement";
 
 import './counter.css'
-import './selectItem.css'
 
-const Counter = ({counter,counters,saveCounters,updateShowDelete,updateShowShare,captIdToSave,selectCounter}) => {
+export const Counter = ({counter,counters,saveCounters,updateShowDelete,updateShowShare,captIdToSave,idToSave}) => {
 
-    const counterIsSelected = selectCounter.id === counter.id;
+    const counterIsSelected = idToSave.id === counter.id;
 
     return (
-            <div
-                className="ThirdDiv"
-               /* style={{backgroundColor:
-                        counterIsSelected
-                            ? "#FF9500"
-                            : "white"}}*/
-            >
+            <Fragment>
                 <p
                     id="selection"
                     className="rowFirst"
@@ -26,6 +19,11 @@ const Counter = ({counter,counters,saveCounters,updateShowDelete,updateShowShare
                         captIdToSave(counter);
                     }}
                 >
+                    <div
+                        className={
+                            counterIsSelected
+                                ? "selectItem"
+                                : null}> </div>
                     <div className="rowTitle rowTitleText"> {counter.title} </div>
 
                     <div className="rowCounters">
@@ -44,7 +42,13 @@ const Counter = ({counter,counters,saveCounters,updateShowDelete,updateShowShare
                         />
                     </div>
                 </p>
-            </div>
+            </Fragment>
     );
 }
 export default Counter;
+
+/* style={{backgroundColor:
+         counterIsSelected
+             ? "#FF9500"
+             : "white"}}*/
+/* className={counterIsSelected ? "ThirdDiv" : "selectItem"}*/

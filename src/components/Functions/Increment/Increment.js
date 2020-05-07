@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import api from "../../../api";
 import './incrementDecrement.css';
 
 const Increment = ({counter,counters,saveCounters}) => {
@@ -11,11 +12,7 @@ const Increment = ({counter,counters,saveCounters}) => {
             'id': id
         };
 
-        fetch('/api/v1/counter/inc', {
-            method: 'post',
-            headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
-            body: JSON.stringify(body)
-        })
+        api.post('/api/v1/counter/inc', body)
             .then(res => res.json())
             .then(res => {
                 counters = counters.map(data => data.id === res.id ? res : data);

@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import api from "../../../api";
 import './delete.css'
 
 const Delete = ({updateShowDelete,idToSave,updateShowShare,saveCounters,counters}) => {
@@ -10,11 +11,7 @@ const Delete = ({updateShowDelete,idToSave,updateShowShare,saveCounters,counters
             'id': id
         };
 
-        fetch('/api/v1/counter', {
-            method: 'delete',
-            headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
-            body: JSON.stringify(body)
-        })
+        api.delete('/api/v1/counter',body)
             .then(res => res.json())
             .then(res => {
                 counters = counters.filter(data => data.id !== res);

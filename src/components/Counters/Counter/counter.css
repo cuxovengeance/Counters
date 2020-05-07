@@ -73,4 +73,16 @@
     cursor: pointer;
 }
 
+.selectItem{
+    position: static;
+    width: 25px;
+    left: 2.43%;
+    right: 2.43%;
+    top: 10.45%;
+    bottom: 10.45%;
+    color: #212121;
+    background: #FF9500;
+    opacity: 0.2;
+    border-radius: 6px;
+}
 

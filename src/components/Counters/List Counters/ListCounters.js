@@ -1,6 +1,7 @@
-import React, {Fragment, useCallback, useEffect, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import Counter from "../Counter/Counter";
 import TotalCounters from "../TotalCounters/TotalCounters";
+import api from "../../../api";
 import './listCounters.css';
 import './Search/search.css';
 
@@ -18,18 +19,13 @@ const ListCounters = ({
     const [filteredCounters , setFilteredCounters] = useState([]);
     const [showList, setShowList] = useState(true);
 
-    /*Obtengo los registros*/
-    const getCounters = () => (
-        fetch('/api/v1/counter', { method: 'get' })
-            .then(res => res.json())
-    );
 
     /*UseEffect para mostrar la lista al iniciar*/
     useEffect(() => {
-        getCounters().then(res => {
-            saveCounters(res)
-            res.length && setShowList(true);
-            res.length && setFilteredCounters(res);
+            api.get('/api/v1/counter').then(res => {
+                saveCounters(res)
+                res.length && setShowList(true);
+                res.length && setFilteredCounters(res);
         })
     },[]);
 
@@ -62,9 +58,6 @@ const ListCounters = ({
         setSearch('');
         document.getElementById('inputSearch').value = '';
     }
-
-    /*useCallback para detectar registro seleccionado*/
-    const selectCounter = useCallback(data => captIdToSave(data), [idToSave]);
 
         return (
             <Fragment>
@@ -117,7 +110,7 @@ const ListCounters = ({
                                         updateShowShare={updateShowShare}
 
                                         captIdToSave={captIdToSave}
-                                        selectCounter={selectCounter}
+                                        idToSave={idToSave}
                                     />
                                 </div>
                             ))}
@@ -226,3 +219,10 @@ useEffect(() => {
         )
 
 }, [counters, search, createCounter,saveCounters,counter, savecreateCounter, setLoadingSearch]);*/
+
+/*Obtengo los registros*/
+/* const getCounters = () => api.get('/api/v1/counter')*//* (*/
+/*fetch('/api/v1/counter', { method: 'get' })
+    .then(res => res.json())*/
+
+/* );*/

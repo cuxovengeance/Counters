@@ -13,8 +13,6 @@ function App() {
 
     const [showWelcome, updateShowWelcome] = useState(true);      /*State de WelcomeScreen*/
     const [counters, saveCounters] = useState([]);                /*State de los Contadores*/
-    const [counter, saveCounter] = useState('');                  /*State para un solo contador*/
-    const [createCounter, savecreateCounter] = useState(false);   /*State para saber si se creo un counter nuevo*/
     const [showDelete, updateShowDelete] = useState(false);       /*State Mostrar Delete*/
     const [idToSave, captIdToSave] = useState('');                /*State para captar el registro clickeado*/
     const [showShare, updateShowShare] = useState(false);         /*State Mostrar Share*/
@@ -48,7 +46,6 @@ function App() {
 
                     {/*Crear Contador Nuevo*/}
                     <CreateCounter
-                        savecreateCounter={savecreateCounter}
                         saveCounters={saveCounters}
                         counters={counters}
                         updateShowExamples={updateShowExamples}

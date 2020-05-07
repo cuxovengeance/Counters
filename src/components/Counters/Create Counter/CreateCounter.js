@@ -1,18 +1,14 @@
 import React, {Fragment, useState} from "react";
 import Swal from "sweetalert2";
+import api from "../../../api";
 
 import './createCounter.css';
 import Error from "../Errors/Error";
 
-const CreateCounter = ({savecreateCounter,saveCounters,counters,updateShowExamples}) => {
+const CreateCounter = ({saveCounters,counters,updateShowExamples}) => {
 
-    const [title, saveName] = useState('');   /*State para captar el nombre*/
-    const [error, saveError] = useState(false);  /*Validar Contador - lo inicio en falso porque en un principio no tengo ningun error*/
-    const[isOpen, updateIsOpen] = useState(false);  /*Cerrar: empieza en false para que al hacer click en el boton pase a true*/
-
-    const openPopup = () => {
-        updateIsOpen(true);
-    }
+    const [title, saveName] = useState('');          /*State para captar el nombre*/
+    const [error, saveError] = useState(false);      /*Validar Contador - lo inicio en falso porque en un principio no tengo ningun error*/
 
     const addCounter = (e) => {
         e.preventDefault();
@@ -29,28 +25,16 @@ const CreateCounter = ({savecreateCounter,saveCounters,counters,updateShowExampl
         /*Construyo EL contador que estoy agregando*/
         const counter = {title}
 
-        /*console.log(counter);*/
-
-        const callApi = () => {
-            fetch('/api/v1/counter', {
-                method: 'post',
-                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-                body: JSON.stringify(counter)
+        /*llamo la api, le paso la url, los datos*/
+        api.post('/api/v1/counter', counter)
+            .then(res => res.json())
+            .then(res => {
+                saveCounters([...counters,res])
             })
-                .then(res => res.json())
-                .then(res => {
-                    saveCounters([...counters,res])
-                })
-        }
 
         /*el saveCounter es para guardar el contador que estoy creando, en
         * este caso hago una copia de lo que ya esta y agrego el nuevo
         * dentro del mismo arreglo*/
-
-        /*Le paso los datos a la API para hacer el POST*/
-        callApi(counter);
-
-        savecreateCounter(true);
 
         /*Reset del Form*/
         saveName('');
@@ -69,7 +53,7 @@ const CreateCounter = ({savecreateCounter,saveCounters,counters,updateShowExampl
         <Fragment>
             <hr className="positionSeparator"/>
 
-            <button onClick={() => {openPopup()}} type="button" className="btn buttonCreate" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" className="btn buttonCreate" data-toggle="modal" data-target="#exampleModal">
                 <i className="fas fa-plus buttonCreateIcon "> </i>
             </button>
 
@@ -89,7 +73,7 @@ const CreateCounter = ({savecreateCounter,saveCounters,counters,updateShowExampl
                                 className="btn saveCounterButton"
                                 value="Save"
                                 onClick={() => {updateShowExamples(false);}}
-                            >{/*<label className="textSaveCounterButton">Save</label> */} Save </button>
+                            > Save </button>
 
                               {/*  {/!*En caso de que exista un Error mostrará un mensaje*!/}*/}
                                 {error ?
@@ -103,7 +87,7 @@ const CreateCounter = ({savecreateCounter,saveCounters,counters,updateShowExampl
                                 <input
                                     type="text"
                                     placeholder="Cups of Coffee"
-                                    className="WidthName inputCreateCounter"
+                                    className="WidthName inputCreateCounter input"
                                     value={title}
                                     onChange={ e => saveName(e.target.value)}
                                 />
@@ -231,3 +215,17 @@ export default CreateCounter;
         </div>
     </div>
 </div>*/
+
+/*        const callApi = () => {
+            fetch('/api/v1/counter', {
+                method: 'post',
+                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                body: JSON.stringify(counter)
+            })
+                .then(res => res.json())
+                .then(res => {
+                    saveCounters([...counters,res])
+                })
+        }*/
+/*Le paso los datos a la API para hacer el POST*/
+/*  callApi(counter);*/

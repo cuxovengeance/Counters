@@ -30,7 +30,7 @@ const Share = ({idToSave}) => {
             className="popupShare"
         >
             <div>
-                <label className="labelShare"> Share 1 Counter&nbsp;</label>
+                <label className="labelShare"> Share 1 Counter:&nbsp;</label>
                 <label className="labelShare">{completeText}</label>
                 {/*<img src={paperNote} className="paperNotecss" alt="paperNote"/>*/}
 
