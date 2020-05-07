@@ -4,6 +4,7 @@ import TotalCounters from "../TotalCounters/TotalCounters";
 import api from "../../../api";
 import './listCounters.css';
 import './Search/search.css';
+import '../../../index.css';
 
 const ListCounters = ({
                           counters,
@@ -28,6 +29,7 @@ const ListCounters = ({
                 res.length && setFilteredCounters(res);
         })
     },[]);
+
 
     /*UseEffect Para realizar la busqueda de un Contador*/
     useEffect(() => {
@@ -63,7 +65,7 @@ const ListCounters = ({
             <Fragment>
 
                 {/*=========SEARCH BAR ===========*/}
-                <div className="searchDiv">
+                <div className="searchDiv fade-in">
                     <input
                         className="searchInput"
                         id="inputSearch"
@@ -73,19 +75,20 @@ const ListCounters = ({
                             setSearch(e.target.value);
                         }}
                     />
-                    <button
-                        className="cancelButton"
-                        onClick={() => {
+                </div>
+                <button
+                    id="cancelButton"
+                    className="cancelButton fade-in"
+                    onClick={() => {
                         erase()
                     }}>
-                        <label
-                            className="labelCancel"
-                        >Cancel</label>
-                    </button>
-                </div>
+                    <label
+                        className="labelCancel"
+                    >Cancel</label>
+                </button>
 
                 {/*=========TOTAL COUNTERS=========*/}
-                <div className=".container totalTimes divTotalConter">
+                <div className=".container totalTimes divTotalConter fade-in">
                     <TotalCounters
                         counters={counters}
                     />
@@ -94,7 +97,7 @@ const ListCounters = ({
                 <div className="divContent">
                     {/*==========LIST COUNTERS==========*/}
                     {showList ?
-                         <div className="FirstContainer">
+                         <div className="FirstContainer fade-in">
                             {filteredCounters.map((counter) => (
                                 <div
                                     key={counter.id}
@@ -115,11 +118,11 @@ const ListCounters = ({
                                 </div>
                             ))}
                         </div>
-                    : <div className="boxNoCounters">
-                            <h2 className="h1NoContent">No counters yet</h2>
+                    : <div className="boxNoCounters fade-in">
+                            <h2 className="h1NoContent fade-in">No counters yet</h2>
                             <br/>
-                            <p className="pNoContent">“When I started counting my blessings, my whole life turned around.”</p>
-                            <p className="pNoContent">—Willie Nelson</p>
+                            <p className="pNoContent fade-in">“When I started counting my blessings, my whole life turned around.”</p>
+                            <p className="pNoContent fade-in">—Willie Nelson</p>
                     </div>}
 
                 </div>

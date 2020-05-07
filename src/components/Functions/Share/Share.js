@@ -4,6 +4,7 @@ import {CopyToClipboard} from "react-copy-to-clipboard";
 import Swal from "sweetalert2";
 
 import './share.css'
+import '../../../index.css';
 import paperNote from './svg/PaperNote.svg';
 
 const Share = ({idToSave}) => {
@@ -22,7 +23,7 @@ const Share = ({idToSave}) => {
 
     return(
         <Popup
-            trigger={<button className="button buttonShare">
+            trigger={<button className="button buttonShare fade-in">
                 <i className="fa fa-share-square-o iconShare"> </i>
             </button>}
             position="top center"

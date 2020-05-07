@@ -71,11 +71,12 @@
     color: #212121;
     margin-top: 15px;
     cursor: pointer;
+    margin-left: 150px;
 }
 
 .selectItem{
     position: static;
-    width: 25px;
+    width: 10px;
     left: 2.43%;
     right: 2.43%;
     top: 10.45%;

@@ -3,12 +3,14 @@ import Swal from "sweetalert2";
 import api from "../../../api";
 
 import './createCounter.css';
-import Error from "../Errors/Error";
+import '../../../index.css';
+import Error from "../../Errors/Error";
 
 const CreateCounter = ({saveCounters,counters,updateShowExamples}) => {
 
     const [title, saveName] = useState('');          /*State para captar el nombre*/
     const [error, saveError] = useState(false);      /*Validar Contador - lo inicio en falso porque en un principio no tengo ningun error*/
+    /*const [offline, setOffline] = useState(false);*/
 
     const addCounter = (e) => {
         e.preventDefault();
@@ -28,9 +30,11 @@ const CreateCounter = ({saveCounters,counters,updateShowExamples}) => {
         /*llamo la api, le paso la url, los datos*/
         api.post('/api/v1/counter', counter)
             .then(res => res.json())
-            .then(res => {
-                saveCounters([...counters,res])
+            .then(res => {saveCounters([...counters,res])
             })
+            .catch(error => {
+                console.log('Error: ', error);
+            });
 
         /*el saveCounter es para guardar el contador que estoy creando, en
         * este caso hago una copia de lo que ya esta y agrego el nuevo
@@ -53,7 +57,7 @@ const CreateCounter = ({saveCounters,counters,updateShowExamples}) => {
         <Fragment>
             <hr className="positionSeparator"/>
 
-            <button type="button" className="btn buttonCreate" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" className="btn buttonCreate fade-in" data-toggle="modal" data-target="#exampleModal">
                 <i className="fas fa-plus buttonCreateIcon "> </i>
             </button>
 

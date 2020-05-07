@@ -1,9 +1,12 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useState} from "react";
 import api from "../../../api";
 import './delete.css'
+import '../../../index.css';
+import OfflineError from "../../Errors/OfflineError";
 
 const Delete = ({updateShowDelete,idToSave,updateShowShare,saveCounters,counters}) => {
 
+    const [offlineError, setOfflineError] = useState(false);
     const deleteCount = () => {
         const id = idToSave.id;
 
@@ -18,55 +21,59 @@ const Delete = ({updateShowDelete,idToSave,updateShowShare,saveCounters,counters
                 saveCounters(counters);
                 return null;
             })
+            .catch(error => {
+                console.log('Error:', error);
+                setOfflineError(true);
+            })
     }
 
     return(
         <Fragment>
 
-            <button type="button" className="button buttonDelete" data-toggle="modal" data-target="#staticBackdrop">
+            <button type="button" className="button buttonDelete fade-in" data-toggle="modal" data-target="#staticBackdrop">
                 <i className="fas fa-trash-alt iconTrash"> </i>
             </button>
 
-            <div className="modal fade" id="staticBackdrop" data-backdrop="static" tabIndex="-1" role="dialog"
-                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div className="modal fade" id="staticBackdrop" data-backdrop="static" tabIndex="-1" role="dialog"
+                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
 
-                <div className="modal-dialog modalLocation" role="document">
-                    <div className="modal-content modalSizeDelete">
+                        <div className="modal-dialog modalLocation" role="document">
+                            <div className="modal-content modalSizeDelete">
 
-                        <div className="modalTitleCenter">
-                            <h5 className="h5Style">Delete modal "{idToSave.title}" counter?</h5>
+                                <div className="modalTitleCenter">
+                                    <h5 className="h5Style">Delete modal "{idToSave.title}" counter?</h5>
+                                </div>
+
+
+                                <div className="modalbodyCenter">
+                                    <p className="pStyleDelete">This cannot be undone.</p>
+                                </div>
+
+                                <div className="buttonsPosition">
+                                    <button type="button"
+                                            className="btn buttonCancelDelete"
+                                            data-dismiss="modal"
+                                            onClick={() => {
+                                                updateShowDelete(false);
+                                                updateShowShare(false);
+                                            }}
+                                    ><label className="cancelTextButton" >Cancel</label></button>
+
+                                    &emsp;&emsp;
+
+                                    <button type="button"
+                                            className="btn buttonDeleteStyle"
+                                            data-dismiss="modal"
+                                            onClick={() => {
+                                                deleteCount();
+                                                updateShowDelete(false);
+                                                updateShowShare(false);}}
+                                    ><label className="DeleteTextButton">Delete</label> </button>
+                                </div>
+
+                            </div>
                         </div>
-
-
-                        <div className="modalbodyCenter">
-                            <p className="pStyleDelete">This cannot be undone.</p>
-                        </div>
-
-                        <div className="buttonsPosition">
-                            <button type="button"
-                                    className="btn buttonCancelDelete"
-                                    data-dismiss="modal"
-                                    onClick={() => {
-                                        updateShowDelete(false);
-                                        updateShowShare(false);
-                                    }}
-                            ><label className="cancelTextButton" >Cancel</label></button>
-
-                            &emsp;&emsp;
-
-                            <button type="button"
-                                    className="btn buttonDeleteStyle"
-                                    data-dismiss="modal"
-                                    onClick={() => {
-                                        deleteCount();
-                                        updateShowDelete(false);
-                                        updateShowShare(false);}}
-                            ><label className="DeleteTextButton">Delete</label> </button>
-                        </div>
-
                     </div>
-                </div>
-            </div>
 
         </Fragment>
     );

@@ -13,7 +13,7 @@ const Welcome = ({updateShowWelcome}) => {
 
     return(
         <Fragment>
-            <div className="welcomeContent">
+            <div className="welcomeContent fade-in">
                 <div >
                     <img src={icon} alt="icon"/>
                 </div>
