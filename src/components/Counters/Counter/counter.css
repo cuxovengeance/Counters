@@ -4,12 +4,7 @@
     height: 67px;
     left: 0px;
     top: 46px;
-
-
     background: #FFFFFF;
-
-    /* Inside Auto Layout */
-
     flex: none;
     order: 1;
     align-self: flex-start;
@@ -37,23 +32,12 @@
 }
 
 .rowTitleText{
-   /* position: absolute;*/
-/*    left: 24px;
-    right: 128px;
-    top: 23px;
-    bottom: 21px;*/
-
     font-style: normal;
     font-weight: normal;
     font-size: 17px;
     line-height: 23px;
-    /* identical to box height, or 110% */
-
     text-align: initial;
     letter-spacing: 0.02em;
-
-    /* Text Color */
-
     color: #212121;
 }
 
@@ -65,9 +49,6 @@
     line-height: 22px;
     text-align: right;
     letter-spacing: -0.408px;
-
-    /* Text Color */
-
     color: #212121;
     margin-top: 15px;
     cursor: pointer;

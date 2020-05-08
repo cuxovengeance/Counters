@@ -1,12 +1,11 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment} from "react";
 import api from "../../../api";
 import './delete.css'
 import '../../../index.css';
-import OfflineError from "../../Errors/OfflineError";
+
 
 const Delete = ({updateShowDelete,idToSave,updateShowShare,saveCounters,counters}) => {
 
-    const [offlineError, setOfflineError] = useState(false);
     const deleteCount = () => {
         const id = idToSave.id;
 
@@ -23,7 +22,6 @@ const Delete = ({updateShowDelete,idToSave,updateShowShare,saveCounters,counters
             })
             .catch(error => {
                 console.log('Error:', error);
-                setOfflineError(true);
             })
     }
 
@@ -80,59 +78,3 @@ const Delete = ({updateShowDelete,idToSave,updateShowShare,saveCounters,counters
 };
 
 export default Delete;
-
-/*console.log(JSON.stringify(idToSave));*/
-
-/*<Popup trigger={<button className="button buttonDelete"><i className="fas fa-trash-alt"> </i> </button>} modal>
-                    {close => (
-                        <div>
-                            <div className="actions">
-                                <button
-                                    className="button buttonCancel"
-                                    onClick={() => {
-                                        close();
-                                        updateShowDelete(false);
-                                        updateShowShare(false);
-                                    }}
-                                > Cancel </button>
-
-                                <button className="buttonDeleteSecond" onClick={() => {
-                                    deleteCount();
-                                    close();
-                                    updateShowDelete(false);
-                                    updateShowShare(false);
-                                }}> Delete </button>
-                            </div>
-                        </div>
-                    )}
-                </Popup>*/
-
-/*                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title modalTitleCenter" id="staticBackdropLabel">Delete modal "{idToSave.title}" counter?</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div className="modal-body modalbodyCenter">
-                            This cannot be undone.
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button"
-                                    className="btn btn-secondary"
-                                    data-dismiss="modal"
-                                    onClick={() => {
-                                        updateShowDelete(false);
-                                        updateShowShare(false);
-                                    }}
-                            >Cancel</button>
-                            <button type="button"
-                                    className="btn btn-primary"
-                                    data-dismiss="modal"
-                                    onClick={() => {
-                                        deleteCount();
-                                        updateShowDelete(false);
-                                        updateShowShare(false);}}
-                            > Delete </button>
-                        </div>
-                    </div>*/

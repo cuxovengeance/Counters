@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 
 import './share.css'
 import '../../../index.css';
-import paperNote from './svg/PaperNote.svg';
 
 const Share = ({idToSave}) => {
 
@@ -33,7 +32,6 @@ const Share = ({idToSave}) => {
             <div>
                 <label className="labelShare"> Share 1 Counter:&nbsp;</label>
                 <label className="labelShare">{completeText}</label>
-                {/*<img src={paperNote} className="paperNotecss" alt="paperNote"/>*/}
 
                 <CopyToClipboard text={completeText}>
                     <button onClick={alertSuccess} className="button buttonCopy"><label className="textCopyButton">Copy</label> </button>
@@ -45,6 +43,3 @@ const Share = ({idToSave}) => {
 };
 
 export default Share;
-
-/*console.log(JSON.stringify(idToSave))*/
-/*console.log(completeText);*/

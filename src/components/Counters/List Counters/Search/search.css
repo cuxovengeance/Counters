@@ -34,8 +34,6 @@ input[type=text]:focus {
 .cancelButton {
     position: absolute;
     display: block;
-    /*margin-left: auto;
-    margin-right: auto;*/
     margin-left: 69%;
     top: 19px;
     flex-direction: row;
@@ -49,8 +47,6 @@ input[type=text]:focus {
     position: static;
     left: 18px;
     right: 18px;
-    /* top: 10px; */
-    /* bottom: 10px; */
     font-style: normal;
     font-weight: 600;
     font-size: 14px;

@@ -15,7 +15,6 @@
     height: 23px;
     left: 67px;
     top: calc(50% - 23px/2);
-
     font-style: normal;
     font-weight: 500;
     font-size: 17px;
@@ -23,11 +22,7 @@
     display: flex;
     align-items: center;
     letter-spacing: 0.02em;
-
     color: #888B90;
-
-    /* Inside Auto Layout */
-
     flex: none;
     order: 1;
     align-self: center;
@@ -35,13 +30,11 @@
 }
 
 .totalItemsP {
-
     position: static;
     width: 70px;
     height: 23px;
     left: 67px;
     top: calc(50% - 23px/2);
-
     font-style: normal;
     font-weight: 500;
     font-size: 17px;
@@ -49,11 +42,7 @@
     display: flex;
     align-items: center;
     letter-spacing: 0.02em;
-
     color: #4A4A4A;
-
-    /* Inside Auto Layout */
-
     flex: none;
     order: 1;
     align-self: center;

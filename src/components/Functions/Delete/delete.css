@@ -16,42 +16,6 @@
     float: right;
     margin-right: 20%;
 }
-/*.modal {
-    border-radius: 25px;
-    font-size: 12px;
-}
-.modal > .header {
-    width: 100%;
-    border-bottom: 1px solid gray;
-    font-size: 18px;
-    text-align: center;
-    padding: 5px;
-}
-.modal > .content {
-    width: 100%;
-    padding: 10px 5px;
-
-}
-.modal > .actions {
-    width: 100%;
-    padding: 10px 5px;
-    margin: auto;
-    text-align: center;
-
-}
-.modal > .close {
-    cursor: pointer;
-    position: absolute;
-    display: block;
-    padding: 2px 5px;
-    line-height: 20px;
-    right: -10px;
-    top: -10px;
-    font-size: 24px;
-    background: #ffffff;
-    border-radius: 18px;
-    border: 1px solid #cfcece;
-}*/
 
 .modalLocation {
     margin-top: 230px;
@@ -67,7 +31,6 @@
     right: 0px;
     top: 0px;
     bottom: 0px;
-
     background: #FAFAFA;
     box-shadow: 0px 24px 38px rgba(0, 0, 0, 0.14);
     border-radius: 10px;
@@ -88,7 +51,6 @@
 
 .h5Style {
     position: static;
-    /* width: 255px; */
     height: 60px;
     left: 12px;
     top: 0px;
@@ -103,7 +65,6 @@
     align-self: center;
     margin: auto;
     margin-top: 10px;
-    /* margin: 0px 6px;*/
 }
 
 .modalbodyCenter {
@@ -191,6 +152,3 @@
     align-self: center;
 }
 
-.functionContainer {
-
-}

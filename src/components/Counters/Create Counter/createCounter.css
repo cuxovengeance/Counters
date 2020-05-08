@@ -13,9 +13,6 @@ button :hover {
     position:absolute;
     bottom: 5%;
     right:20%;
-
-    /* App Tint Color */
-
     background: #FF9500;
     border: 1px solid rgba(0, 0, 0, 0.05);
     box-sizing: border-box;
@@ -81,24 +78,17 @@ button :hover {
     display: flow-root;
     width: 90px;
     height: 36px;
-    /* top: 50%; */
-    /* left: 50%; */
     background: #FF9500;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
-    /* font-size: 15px; */
     align-items: center;
-    /* font-feature-settings: 'pnum' on, 'lnum' on; */
     margin-left: auto;
     font-style: normal;
     font-weight: 600;
     font-size: 17px;
-    /* line-height: 23px; */
     text-align: center;
-    /* font-feature-settings: 'pnum' on, 'lnum' on; */
     color: #FFFFFF;
     flex: none;
-    /* order: 0; */
     align-self: center;
 }
 
@@ -108,23 +98,15 @@ button :hover {
     right: 24px;
     top: 8px;
     bottom: 8px;
-
     font-style: normal;
     font-weight: 600;
     font-size: 17px;
     line-height: 23px;
-    /* identical to box height */
-
     display: flex;
     align-items: center;
     text-align: center;
     font-feature-settings: 'pnum' on, 'lnum' on;
-
     color: #FFFFFF;
-
-
-    /* Inside Auto Layout */
-
     flex: none;
     order: 0;
     align-self: center;

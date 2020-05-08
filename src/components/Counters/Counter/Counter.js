@@ -46,9 +46,3 @@ export const Counter = ({counter,counters,saveCounters,updateShowDelete,updateSh
     );
 }
 export default Counter;
-
-/* style={{backgroundColor:
-         counterIsSelected
-             ? "#FF9500"
-             : "white"}}*/
-/* className={counterIsSelected ? "ThirdDiv" : "selectItem"}*/

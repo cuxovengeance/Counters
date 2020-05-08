@@ -25,14 +25,4 @@ describe("ListCounters", () => {
     });
     it('', () => {})
 
-/*    it('Button cancel Search', () => {
-        let wrapper = mount(<ListCounters {...listCountersProps}/>)
-        const erase = jest.fn();
-
-       wrapper.find('.inputSearch').at([0]).simulate('change', {target: {value: 'test erase'}});
-        expect(listCountersProps.search.mock.calls).not.toEqual([[]]);
-        wrapper.find('button').simulate('click');
-        expect(erase).toHaveBeenCalled();
-    });*/
-
 })
